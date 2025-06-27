@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ContactForm
 from .models import Project
+from django.http import HttpResponse
 
 import os
 from dotenv import load_dotenv
@@ -59,3 +60,8 @@ def contact(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+
+def test(request):
+    return HttpResponse("It works!")
