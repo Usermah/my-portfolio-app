@@ -11,8 +11,14 @@ venv/
 
 # Django
 db.sqlite3
-/static/
+/staticfiles/
 
 
 # Secrets
 .env
+
+
+
+
+
+
