@@ -103,11 +103,13 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # }
 
 
-DATABASE_URL = os.getenv("DATABASE_URL")
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(conn_max_age=600)
 }
+
+if not DATABASES['default']:
+    raise Exception("DATABASE_URL is not set! Exiting.")
 
 
 # Password validation
