@@ -48,12 +48,9 @@
         <div class="col-md-4 d-flex">
             <div class="card shadow-sm mb-4 flex-fill">
 
-                {% if project.image_name %}
-                <img src="{% static 'images/' %}{{ project.image_name }}" class="card-img-top" alt="{{ project.title }}">
-                {% endif %}
-                <!-- {% if project.image %}
-                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
-                {% endif %} -->
+                <!-- ✅ Hardcoded static image using loop index -->
+                <img src="{% static 'images/project' %}{{ forloop.counter }}.png" class="card-img-top" alt="{{ project.title }}">
+
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description|truncatewords:20 }}</p>
@@ -72,19 +69,13 @@
 
 <!-- Resume Section -->
 {% if resume %}
-
 <section class="mt-5 text-center">
     <h2>Resume</h2>
     <a href="{% static 'resumes/Usama_Ibrahim.pdf' %}" class="btn btn-primary btn-lg mt-2" download>
         📄 Download Resume
     </a>
 </section>
-
 {% endif %}
-
-
-
-
 
 <!-- Contact Button
 <div class="text-center mt-5">
