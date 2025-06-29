@@ -47,9 +47,13 @@
         {% for project in projects %}
         <div class="col-md-4 d-flex">
             <div class="card shadow-sm mb-4 flex-fill">
-                {% if project.image %}
-                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+
+                {% if project.image_name %}
+                <img src="{% static 'images/' %}{{ project.image_name }}" class="card-img-top" alt="{{ project.title }}">
                 {% endif %}
+                <!-- {% if project.image %}
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                {% endif %} -->
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description|truncatewords:20 }}</p>
