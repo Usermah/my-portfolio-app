@@ -11,6 +11,7 @@ import resend
 load_dotenv()
 resend.api_key = os.environ.get("RESEND_API_KEY")
 
+
 def home(request):
     projects = Project.objects.all().order_by('-created_at')
     resume = Project.objects.first()

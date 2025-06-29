@@ -1,9 +1,10 @@
 <!-- templates/home.html -->
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Portfolio | Usama{% endblock %}
-{% block content %}
 
+{% block title %}Portfolio | Usama{% endblock %}
+
+{% block content %}
 <div class="text-center mb-5">
     <h1 class="display-4">Hi, I'm <span class="text-primary">Usama Ibrahim</span> 👋</h1>
     <p class="lead">A Backend Developer specialized in Python, Django, and Cybersecurity.</p>
@@ -48,8 +49,13 @@
         <div class="col-md-4 d-flex">
             <div class="card shadow-sm mb-4 flex-fill">
 
-                <!-- ✅ Hardcoded static image using loop index -->
-                <img src="{% static 'images/project' %}{{ forloop.counter }}.png" class="card-img-top" alt="{{ project.title }}">
+                <!-- ✅ CORRECT: Tied to project.image_name -->
+                {% if project.image_name %}
+                    <img src="{% static 'images/' %}{{ project.image_name }}" class="card-img-top" alt="{{ project.title }}">
+                {% else %}
+                    <!-- Optional fallback -->
+                    <img src="{% static 'images/default.png' %}" class="card-img-top" alt="Default">
+                {% endif %}
 
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
@@ -76,10 +82,4 @@
     </a>
 </section>
 {% endif %}
-
-<!-- Contact Button
-<div class="text-center mt-5">
-    <a href="{% url 'contact' %}" class="btn btn-secondary">📬 Contact Me</a>
-</div> -->
-
 {% endblock %}
