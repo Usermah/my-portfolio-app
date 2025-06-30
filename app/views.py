@@ -11,32 +11,10 @@ import resend
 load_dotenv()
 resend.api_key = os.environ.get("RESEND_API_KEY")
 
-
-
 def home(request):
     projects = Project.objects.all().order_by('-created_at')
-    images = [
-        "project1.png",
-        "project2.png",
-        "project3.png",
-        "project4.png",
-        "project5.png",
-        "project6.png",
-        "project7.png",
-        "project8.png",
-    ]
-   
-    projects_with_images = zip(projects, images)
     resume = Project.objects.first()
-    return render(request, 'home.html', {
-        'projects_with_images': projects_with_images,
-        'resume': resume
-    })
-
-# def home(request):
-#     projects = Project.objects.all().order_by('-created_at')
-#     resume = Project.objects.first()
-#     return render(request, 'home.html', {'projects': projects, 'resume': resume})
+    return render(request, 'home.html', {'projects': projects, 'resume': resume})
 
 def contact(request):
     if request.method == 'POST':
